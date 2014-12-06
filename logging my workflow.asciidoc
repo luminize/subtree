@@ -42,10 +42,9 @@ give output like something like this:
 
 ```
   master          c216105 [enhancement/master] add /docs and /docs/src with textfiles§
-  subtree-branch  8216473 [enhancement/subtree-branch] log: add more steps and info
-* upstream-branch 8216473 [upstream-source/master: ahead 2] log: add more steps and info
+* subtree-branch  9c1645c [enhancement/subtree-branch] log: add more info about remote branches and tracking
+  upstream-branch 8216473 [upstream-source/master: ahead 2] log: add more steps and info
 ```
-
 
 == update done in `upstream`
 when some change is done in `upstream` then the following must happen:
@@ -59,16 +58,5 @@ be easily modified by other people. I will test this later.
 
 Then modifications from Github can be pulled into subtree
 
-[TIP]
-====
-reading up on some asciidoc formatting
-`monospace text between accute accents`
-
-`single quote'
-
-``double quot''
-
-^super^script
-
-~sub~script
-====
+test for inter document linking
+link:<asciidoc markup.asciidoc>[asciidoc markup]
