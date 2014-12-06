@@ -2,7 +2,7 @@ here are some tips for working with asciidoc
 this file is at the same time a test to see if the github asciidoc renderer
 will show correct links.
 
-link:<logging my workflow.asciidoc>[logging my workflow]
+link:logging%20my%20workflow.asciidoc[logging my workflow]
 
 [TIP]
 ====
