@@ -59,4 +59,4 @@ be easily modified by other people. I will test this later.
 Then modifications from Github can be pulled into subtree
 
 test for inter document linking
-link:<asciidoc markup.asciidoc>[asciidoc markup]
+link:<asciidoc%20markup.asciidoc>[asciidoc markup]
