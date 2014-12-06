@@ -25,14 +25,27 @@ Locally I made 3 directories files in a git repo and added /docs/src directory t
 `subtree` means "/docs"
 ====
 
-further the sutuation I made is:
+further the situation I made is:
 
 . `upstream` has the remote `upstream`
-. `enhancement` has the remotes `upstream-src` and `enhancement`
-. `enhancement` has the branches 
-** `upstream`
-** `master`
-** `subtree-branch` (in which this log is held).
+. `enhancement` has the remotes `upstream-source` and `enhancement`
+. `enhancement` has the branches
+** `upstream-branch` and is tracking `upstream-source/master`
+** `master` and is tracking `enhancement/master`
+** `subtree-branch` (in which this log is held). and is tracking `enhancement/subtree-branch`
+
+switch to a branch with `git branch checkout <branch name>.` and then
+type `git branch -u <remote name>/<branch name>`
+
+if you want to see which branch is tracking what type `git branch -vv` it then will
+give output like something like this:
+
+```
+  master          c216105 [enhancement/master] add /docs and /docs/src with textfiles§
+  subtree-branch  8216473 [enhancement/subtree-branch] log: add more steps and info
+* upstream-branch 8216473 [upstream-source/master: ahead 2] log: add more steps and info
+```
+
 
 == update done in `upstream`
 when some change is done in `upstream` then the following must happen:
