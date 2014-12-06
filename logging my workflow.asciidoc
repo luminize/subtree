@@ -1,6 +1,7 @@
 Refactoring documentation
 =========================
 
+[NOTE]
 ====
 This is the log of me, trying to fit change the way of documenting for the
 Machinekit project. With this I'm testing the workflow for enhancing the documentation.
@@ -8,13 +9,14 @@ Machinekit project. With this I'm testing the workflow for enhancing the documen
 
 I made 3 git repositories on github/luminize
 
-`upstream`
+. `upstream`
+. `enhancement`
+. `subtree`
 
-`enhancement`
 
-`subtree`
+Locally I made 3 directories files in a git repo and added /docs/src directory to `upstream`
 
-Locally I made files in a git repo and added /docs/src directory to `upstream`
+[NOTE]
 ====
 `upstream` means "LunixCNC"
 
@@ -23,11 +25,28 @@ Locally I made files in a git repo and added /docs/src directory to `upstream`
 `subtree` means "/docs"
 ====
 
+further the sutuation I made is:
+
+. `upstream` has the remote `upstream`
+. `enhancement` has the remotes `upstream-src` and `enhancement`
+. `enhancement` has the branches 
+** `upstream`
+** `master`
+** `subtree-branch` (in which this log is held).
+
+== update done in `upstream`
+when some change is done in `upstream` then the following must happen:
+
+. `upstream/master` pulled into `enhancement/upstream`
+. `enhancement/master` is rebased onto `enhancement/upstream`
+
+== easy adding to the documentation
 If I am correct then the "/docs" should go als in subtree.wiki.git as that will
-be easily modified by other people.
+be easily modified by other people. I will test this later.
 
 Then modifications from Github can be pulled into subtree
 
+[TIP]
 ====
 reading up on some asciidoc formatting
 `monospace text between accute accents`
