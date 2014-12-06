@@ -1,0 +1,42 @@
+Refactoring documentation
+=========================
+
+====
+This is the log of me, trying to fit change the way of documenting for the
+Machinekit project. With this I'm testing the workflow for enhancing the documentation.
+====
+
+I made 3 git repositories on github/luminize
+
+`upstream`
+
+`enhancement`
+
+`subtree`
+
+Locally I made files in a git repo and added /docs/src directory to `upstream`
+====
+`upstream` means "LunixCNC"
+
+`enhancement` means "Machinekit"
+
+`subtree` means "/docs"
+====
+
+If I am correct then the "/docs" should go als in subtree.wiki.git as that will
+be easily modified by other people.
+
+Then modifications from Github can be pulled into subtree
+
+====
+reading up on some asciidoc formatting
+`monospace text between accute accents`
+
+`single quote'
+
+``double quot''
+
+^super^script
+
+~sub~script
+====
