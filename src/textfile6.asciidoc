@@ -1,1 +1,5 @@
 this is some more source in a text file
+
+this will be a test to change source upstream and get the workflow
+right with the /docs/src in a separate `subtree` repo which can be
+pushed and pulled from the `enhancement/subtree` branch.
