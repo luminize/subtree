@@ -1,2 +1,10 @@
 abc
 def
+
+this line will have to show up in textfile3.asciidoc in the `enhancement/subtree-branch' after:
+. a pull of `upstream-source/master` in `enhancement/upstream-branch`
+. rebase of `enhancement/master' onto `enhancement/upstream-branch`
+. rebase of `enhancement/subtree-branch` onto `enhancement/subtree-branch`
+
+while this current file fas a different extension, namely `.asciidoc`
+
