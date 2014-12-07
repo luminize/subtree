@@ -99,6 +99,30 @@ To https://github.com/luminize/subtree.git
 
 the next point will be me pulling the changes I do to this file on-line in `subtree` repo.
 
+== pulling from `subtree/master` in `enhancement/subtree-branch`
+you need to do `git subtree pull --prefix=<directory> <remote> <branch of remote>
+see output:
+```
+Bass-MacBook-Pro-3:enhancement basdebruijn$ git subtree pull --prefix=docs subtree master
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 3 (delta 2), reused 0 (delta 0)
+Unpacking objects: 100% (3/3), done.
+From https://github.com/luminize/subtree
+* branch            master     -> FETCH_HEAD
+  d2c9f57..27c91be  master     -> subtree/master
+Auto-merging docs/logging my workflow.asciidoc
+CONFLICT (content): Merge conflict in docs/logging my workflow.asciidoc
+Automatic merge failed; fix conflicts and then commit the result.
+Bass-MacBook-Pro-3:enhancement basdebruijn$ git pull --abort
+U	docs/logging my workflow.asciidoc
+Pull is not possible because you have unmerged files.
+Please, fix them up in the work tree, and then use 'git add/rm <file>'
+as appropriate to mark resolution, or use 'git commit -a'.
+Bass-MacBook-Pro-3:enhancement basdebruijn$ git commit -a
+[subtree-branch 25b478a] Merge commit '27c91beaaa5e53d7be9b1eca3c8b672d9b14001e' into subtree-branch
+```
+
 == easy adding to the documentation
 If I am correct then the "/docs" should go als in subtree.wiki.git as that will
 be easily modified by other people. I will test this later.
