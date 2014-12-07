@@ -80,3 +80,4 @@ Then modifications from Github can be pulled into subtree
 
 test for inter document linking
 link:asciidoc%20markup.asciidoc[asciidoc markup]
+link:terminal%20output%20of%20split%20operation.asciidoc[split operation]
