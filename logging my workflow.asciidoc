@@ -38,7 +38,7 @@ switch to a branch with `git branch checkout <branch name>.` and then
 type `git branch -u <remote name>/<branch name>`
 
 if you want to see which branch is tracking what type `git branch -vv` it then will
-give output like something like this:
+give output like something like this in the `enhancement` repo:
 
 ```
   master          c216105 [enhancement/master] add /docs and /docs/src with textfiles§
@@ -49,8 +49,21 @@ give output like something like this:
 == update done in `upstream`
 when some change is done in `upstream` then the following must happen:
 
-. `upstream/master` pulled into `enhancement/upstream`
-. `enhancement/master` is rebased onto `enhancement/upstream`
+. `upstream/master` (a.k.a. upstream-source/master) pulled into `enhancement/upstream-branch`
+. `enhancement/master` is the branch to which updates and new stuff that is usable
+are are being applied from `enhancement/upstream-branch`
+. then
+
+== testing the workflow
+
+. change a file in local `upstream`
+. push to `upstream`
+. in local `enhancement/upstream-branch` pull `upstream-source/master`
+. in local `enhancement/master` rebase onto `enhancement/upstream-branch`
+. then add a little correction into the new file
+. commit
+. in local `enhancement/subtree-branch` rebase unto `enhancement/master`
+. push both `subtree-branch` and `master` to github.
 
 == easy adding to the documentation
 If I am correct then the "/docs" should go als in subtree.wiki.git as that will
