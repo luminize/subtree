@@ -1,0 +1,230 @@
+== here is the output of the split operation, including pushing to the subtree remote
+the splitting operation
+
+```
+Bass-MacBook-Pro-3:enhancement basdebruijn$ mkdir docs-repo
+Bass-MacBook-Pro-3:enhancement basdebruijn$ cd docs-repo
+Bass-MacBook-Pro-3:docs-repo basdebruijn$ git init --bare
+Initialized empty Git repository in /Users/basdebruijn/Projects/subtree-test/enhancement/docs-repo/
+Bass-MacBook-Pro-3:docs-repo basdebruijn$ git subtree split --prefix=docs -b split
+fatal: /Applications/Xcode.app/Contents/Developer/usr/libexec/git-core/git-subtree cannot be used without a working tree.
+Bass-MacBook-Pro-3:docs-repo basdebruijn$ cd ..
+Bass-MacBook-Pro-3:enhancement basdebruijn$ git subtree split --prefix=docs -b split
+-n 1/      25 (0)
+-n 2/      25 (1)
+-n 3/      25 (2)
+-n 4/      25 (3)
+-n 5/      25 (4)
+-n 6/      25 (5)
+-n 7/      25 (6)
+-n 8/      25 (7)
+-n 9/      25 (8)
+-n 10/      25 (9)
+-n 11/      25 (10)
+-n 12/      25 (11)
+-n 13/      25 (12)
+-n 14/      25 (13)
+-n 15/      25 (14)
+-n 16/      25 (15)
+-n 17/      25 (16)
+-n 18/      25 (17)
+-n 19/      25 (18)
+-n 20/      25 (19)
+-n 21/      25 (20)
+-n 22/      25 (21)
+-n 23/      25 (22)
+-n 24/      25 (23)
+-n 25/      25 (24)
+Created branch 'split'
+bfbee0d0cb85c906691325e54bea1e0156be337a
+Bass-MacBook-Pro-3:enhancement basdebruijn$ git push ./docs-repo split:master
+Counting objects: 53, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (49/49), done.
+Writing objects: 100% (53/53), 6.61 KiB | 0 bytes/s, done.
+Total 53 (delta 23), reused 0 (delta 0)
+To ./docs-repo
+ * [new branch]      split -> master
+Bass-MacBook-Pro-3:enhancement basdebruijn$ git branch -vv
+  master          0ce701d [enhancement/master] Merge branch 'master' of https://github.com/luminize/upstream into upstream-branch
+  split           bfbee0d test: add info that I need to merge master instead of rebase onto it ;)
+* subtree-branch  f969e62 [enhancement/subtree-branch] test: add info that I need to merge master instead of rebase onto it ;)
+  upstream-branch 0ce701d [upstream-source/master: ahead 4] Merge branch 'master' of https://github.com/luminize/upstream into upstream-branch
+Bass-MacBook-Pro-3:enhancement basdebruijn$
+```
+into the docs-repo
+
+```
+Bass-MacBook-Pro-3:enhancement basdebruijn$ cd docs-repo
+Bass-MacBook-Pro-3:docs-repo basdebruijn$ git branch
+* master
+Bass-MacBook-Pro-3:docs-repo basdebruijn$ git remote add subtree https://github.com/luminize/subtree.git
+Bass-MacBook-Pro-3:docs-repo basdebruijn$ git remote -v
+subtree	https://github.com/luminize/subtree.git (fetch)
+subtree	https://github.com/luminize/subtree.git (push)
+Bass-MacBook-Pro-3:docs-repo basdebruijn$ git push -u subtree
+warning: push.default is unset; its implicit value is changing in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the current behavior after the default changes, use:
+
+git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+git config --global push.default simple
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+No refs in common and none specified; doing nothing.
+Perhaps you should specify a branch such as 'master'.
+Everything up-to-date
+Bass-MacBook-Pro-3:docs-repo basdebruijn$ git push -u master subtree
+fatal: 'master' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+Bass-MacBook-Pro-3:docs-repo basdebruijn$ git push -u subtree master
+Counting objects: 53, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (49/49), done.
+Writing objects: 100% (53/53), 6.61 KiB | 0 bytes/s, done.
+Total 53 (delta 23), reused 0 (delta 0)
+To https://github.com/luminize/subtree.git
+* [new branch]      master -> master
+Branch master set up to track remote branch master from subtree.
+Bass-MacBook-Pro-3:docs-repo basdebruijn$
+```
+
+== pushing subtree to remote and adding subtree
+after splitting the subtree needs to be pushed to the remote (needs to be added)
+and then the remote repo needs to be added to the current repo.
+
+```
+Bass-MacBook-Pro-3:docs-repo basdebruijn$ git status
+fatal: This operation must be run in a work tree
+Bass-MacBook-Pro-3:docs-repo basdebruijn$ cd ..
+Bass-MacBook-Pro-3:enhancement basdebruijn$ git status
+On branch subtree-branch
+Your branch is up-to-date with 'enhancement/subtree-branch'.
+
+Untracked files:
+(use "git add <file>..." to include in what will be committed)
+
+docs-repo/
+docs/terminal output of split operation.asciidoc
+
+nothing added to commit but untracked files present (use "git add" to track)
+Bass-MacBook-Pro-3:enhancement basdebruijn$ git remote -v
+enhancement	https://github.com/luminize/enhancement.git (fetch)
+enhancement	https://github.com/luminize/enhancement.git (push)
+upstream-source	https://github.com/luminize/upstream.git (fetch)
+upstream-source	https://github.com/luminize/upstream.git (push)
+Bass-MacBook-Pro-3:enhancement basdebruijn$ git remote add subtree https://github.com/luminize/subtree.git
+Bass-MacBook-Pro-3:enhancement basdebruijn$ git rm -r docs
+rm 'docs/asciidoc markup.asciidoc'
+rm 'docs/logging my workflow.asciidoc'
+rm 'docs/src/textfile5.txt'
+rm 'docs/src/textfile6.txt'
+rm 'docs/textfile3.asciidoc'
+rm 'docs/textfile4.txt'
+Bass-MacBook-Pro-3:enhancement basdebruijn$ git status
+On branch subtree-branch
+Your branch is up-to-date with 'enhancement/subtree-branch'.
+
+Changes to be committed:
+(use "git reset HEAD <file>..." to unstage)
+
+deleted:    docs/asciidoc markup.asciidoc
+deleted:    docs/logging my workflow.asciidoc
+deleted:    docs/src/textfile5.txt
+deleted:    docs/src/textfile6.txt
+deleted:    docs/textfile3.asciidoc
+deleted:    docs/textfile4.txt
+
+Untracked files:
+(use "git add <file>..." to include in what will be committed)
+
+docs-repo/
+docs/
+
+Bass-MacBook-Pro-3:enhancement basdebruijn$ git add docs/
+Bass-MacBook-Pro-3:enhancement basdebruijn$ git status
+On branch subtree-branch
+Your branch is up-to-date with 'enhancement/subtree-branch'.
+
+Changes to be committed:
+(use "git reset HEAD <file>..." to unstage)
+
+deleted:    docs/asciidoc markup.asciidoc
+deleted:    docs/logging my workflow.asciidoc
+deleted:    docs/src/textfile5.txt
+deleted:    docs/src/textfile6.txt
+deleted:    docs/textfile3.asciidoc
+deleted:    docs/textfile4.txt
+
+Untracked files:
+(use "git add <file>..." to include in what will be committed)
+
+docs-repo/
+
+Bass-MacBook-Pro-3:enhancement basdebruijn$ git rm docs/terminal\ output\ of\ split\ operation.asciidoc
+error: the following file has changes staged in the index:
+docs/terminal output of split operation.asciidoc
+(use --cached to keep the file, or -f to force removal)
+Bass-MacBook-Pro-3:enhancement basdebruijn$ git rm docs/terminal\ output\ of\ split\ operation.asciidoc -f
+rm 'docs/terminal output of split operation.asciidoc'
+Bass-MacBook-Pro-3:enhancement basdebruijn$ git status
+On branch subtree-branch
+Your branch is up-to-date with 'enhancement/subtree-branch'.
+
+Changes to be committed:
+(use "git reset HEAD <file>..." to unstage)
+
+deleted:    docs/asciidoc markup.asciidoc
+deleted:    docs/logging my workflow.asciidoc
+deleted:    docs/src/textfile5.txt
+deleted:    docs/src/textfile6.txt
+deleted:    docs/textfile3.asciidoc
+deleted:    docs/textfile4.txt
+
+Untracked files:
+(use "git add <file>..." to include in what will be committed)
+
+docs-repo/
+
+Bass-MacBook-Pro-3:enhancement basdebruijn$ git commit -am "removing docs folder"
+[subtree-branch 0146dde] removing docs folder
+6 files changed, 118 deletions(-)
+delete mode 100644 docs/asciidoc markup.asciidoc
+delete mode 100644 docs/logging my workflow.asciidoc
+delete mode 100644 docs/src/textfile5.txt
+delete mode 100644 docs/src/textfile6.txt
+delete mode 100644 docs/textfile3.asciidoc
+delete mode 100644 docs/textfile4.txt
+Bass-MacBook-Pro-3:enhancement basdebruijn$ ls
+docs		docs-repo	textfile1.txt	textfile2.txt
+Bass-MacBook-Pro-3:enhancement basdebruijn$ git status
+On branch subtree-branch
+Your branch is ahead of 'enhancement/subtree-branch' by 1 commit.
+(use "git push" to publish your local commits)
+
+nothing to commit, working directory clean
+Bass-MacBook-Pro-3:enhancement basdebruijn$ git subtree add --prefix=docs subtree master
+git fetch subtree master
+From https://github.com/luminize/subtree
+* branch            master     -> FETCH_HEAD
+* [new branch]      master     -> subtree/master
+Added dir 'docs'
+Bass-MacBook-Pro-3:enhancement basdebruijn$ git status
+On branch subtree-branch
+Your branch is ahead of 'enhancement/subtree-branch' by 19 commits.
+(use "git push" to publish your local commits)
+
+nothing to commit, working directory clean
+Bass-MacBook-Pro-3:enhancement basdebruijn$
+```
+
+link:logging%20my%20workflow.asciidoc[logging my workflow]
