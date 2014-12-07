@@ -122,6 +122,7 @@ as appropriate to mark resolution, or use 'git commit -a'.
 Bass-MacBook-Pro-3:enhancement basdebruijn$ git commit -a
 [subtree-branch 25b478a] Merge commit '27c91beaaa5e53d7be9b1eca3c8b672d9b14001e' into subtree-branch
 ```
+I'll try once again to change in the github environment in `subtree`, commit and pull back locally in `enhancement/subtree0branch`
 
 == easy adding to the documentation
 If I am correct then the "/docs" should go als in subtree.wiki.git as that will
