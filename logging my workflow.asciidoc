@@ -75,6 +75,29 @@ file is changed in `upstream` i'll rename a docyment in `/docs/src` from the
 see link:terminal%20output%20of%20split%20operation.asciidoc[this file] for the
 output of the split operation. Needs to be touched up
 
+== pushing to `subtree/master` after commit in `enhancement/subtree-branch`
+now there comes a time when changes need to be pushed to the `subtree` repo.
+
+I made a commit in `enhancement/subtree-branch` in the /docs directory. for pushing to the `subtree` remote
+you need to do `git subtree push --prefix=<directory> <remote> <branch of remote>
+```
+Bass-MacBook-Pro-3:enhancement basdebruijn$ git subtree push --prefix=docs subtree master
+git push using:  subtree master
+-n 1/       5 (0)
+-n 2/       5 (0)
+-n 3/       5 (0)
+-n 4/       5 (1)
+-n 5/       5 (2)
+Counting objects: 9, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (7/7), 2.84 KiB | 0 bytes/s, done.
+Total 7 (delta 4), reused 0 (delta 0)
+To https://github.com/luminize/subtree.git
+   bfbee0d..d2c9f57  d2c9f57c23845c99970dcb626fb8f5dd9af27987 -> master
+```
+
+the next point will be me pulling the changes I do to this file on-line in `subtree` repo.
 
 == easy adding to the documentation
 If I am correct then the "/docs" should go als in subtree.wiki.git as that will
