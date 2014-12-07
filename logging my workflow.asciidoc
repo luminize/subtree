@@ -134,3 +134,10 @@ Then modifications from Github can be pulled into subtree
 test for inter document linking
 link:asciidoc%20markup.asciidoc[asciidoc markup]
 link:terminal%20output%20of%20split%20operation.asciidoc[split operation]
+
+== some nifty links I came across
+http://stackoverflow.com/questions/9151920/git-rename-or-move-all-files-at-once
+https://rolandwarmerdam.co.nz/github-wiki-sidebars/
+https://help.github.com/articles/ignoring-files/
+https://hpc.uni.lu/blog/2014/understanding-git-subtree/
+http://www.methods.co.nz/asciidoc/index.html
