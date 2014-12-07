@@ -124,6 +124,7 @@ Bass-MacBook-Pro-3:enhancement basdebruijn$ git commit -a
 ```
 I'll try once again to change in the github environment in `subtree`, commit and pull back locally in `enhancement/subtree0branch`
 I keep getting merge conflicts when pulling `subtree` into `enhancement/subtree-branch`. I'll try again, but then in the `subtree` which was `split` when adding the original stuff back into the `enhancement` repo.
+I need to pull when I'm into the `enhancement/subtree` branch which was created at the time of the originial adding of the subtree to the repo
 == easy adding to the documentation
 If I am correct then the "/docs" should go als in subtree.wiki.git as that will
 be easily modified by other people. I will test this later.
