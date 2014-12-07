@@ -71,6 +71,10 @@ with changes from upstream. So the same as the next test, but at the same time a
 file is changed in `upstream` i'll rename a docyment in `/docs/src` from the
 `enhancement/subtree-branch`.
 
+== split operation
+see link:terminal%20output%20of%20split%20operation.asciidoc[this file] for the
+output of the split operation. Needs to be touched up
+
 
 == easy adding to the documentation
 If I am correct then the "/docs" should go als in subtree.wiki.git as that will
